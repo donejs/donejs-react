@@ -1,0 +1,29 @@
+{
+  "name": "donejs-react",
+  "version": "0.0.0",
+  "description": "A plugin to add support for React to your DoneJS application http://donejs.com",
+  "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donejs/donejs-react.git"
+  },
+  "keywords": [
+    "CanJS",
+    "DoneJS",
+    "React"
+  ],
+  "author": "Bitovi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/donejs/donejs-react/issues"
+  },
+  "homepage": "https://github.com/donejs/donejs-react#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.21.1"
+  }
+}

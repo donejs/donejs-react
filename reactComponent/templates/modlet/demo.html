@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= name %> Demo</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="<%= root %>node_modules/steal/steal.js" main="@empty">
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import <%= name %> from './<%= name %>.js';
+
+    ReactDOM.render(
+      React.createElement(<%= name %>),
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>
