@@ -2,10 +2,10 @@ import Map from 'can/map/';
 import 'can/map/define/';
 
 /**
- * @module <%= name %>VM
+ * @module <%= className %>VM
  * @parent Component
  *
- * <%= name %> View Model
+ * <%= className %> View Model
  */
 export default Map.extend({
   define: {
@@ -15,7 +15,7 @@ export default Map.extend({
      * A placeholder view model property.
      */
     message: {
-      value: 'This is the <%= name %> component.'
+      value: 'This is the <%= className %> component.'
     }
   }
 });

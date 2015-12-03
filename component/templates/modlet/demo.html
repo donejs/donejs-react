@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= name %> Demo</title>
+  <title><%= className %> Demo</title>
 </head>
 <body>
   <div id="app"></div>
   <script src="<%= root %>node_modules/steal/steal.js" main="@empty">
     import React from 'react';
     import ReactDOM from 'react-dom';
-    import <%= name %> from './<%= name %>.js';
+    import <%= className %> from './<%= name %>.js';
 
     ReactDOM.render(
-      React.createElement(<%= name %>),
+      React.createElement(<%= className %>),
       document.getElementById('app')
     );
   </script>

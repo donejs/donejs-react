@@ -4,13 +4,13 @@ import renderer from './<%= name %>.jsx';
 import './<%= name %>.scss';
 
 /**
- * @module <%= name %>
+ * @module <%= className %>
  * @parent components
  *
- * <%= name %> Description
+ * <%= className %> Description
  */
 export default CanReact.createClass({
-  name: '<%= name %>',
+  name: '<%= className %>',
   ViewModel,
   template: renderer
 });

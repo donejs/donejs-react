@@ -14,11 +14,11 @@ module.exports = generators.Base.extend({
       desc: 'The module name for your component (e.g. restaurant/list)'
     });
 
-		this.argument('tag', {
-			type: String,
-			required: false,
-			desc: 'The class name of the component (e.g. ComponentName)'
-		});
+    this.argument('className', {
+      type: String,
+      required: false,
+      desc: 'The class name of the component (e.g. ComponentName)'
+    });
 
     this.modletFiles = [
       'modlet/component.js',
@@ -30,38 +30,38 @@ module.exports = generators.Base.extend({
     ];
   },
 
-	prompting: function () {
-		var done = this.async();
-		this.prompt({
-			name: 'name',
-			message: 'What is the module name of your component (e.g. pmo/home)?',
-			required: true,
-			when: !this.name
-		}, function (first) {
-			var name = this.name = this.name || first.name;
+  prompting: function () {
+    var done = this.async();
+    this.prompt({
+      name: 'name',
+      message: 'What is the module name of your component (e.g. pmo/home)?',
+      required: true,
+      when: !this.name
+    }, function (first) {
+      var name = this.name = this.name || first.name;
 
-			var tag = _.kebabCase(name);
-			var prompts = [{
-				name: 'tag',
-				message: 'The tag name of the component',
-				default: tag,
-        when: !this.tag
-			}];
+      var className = _.capitalize(_.camelCase(name));
+      var prompts = [{
+        name: 'className',
+        message: 'The class name of the component',
+        default: className,
+        when: !this.className
+      }];
 
-			this.prompt(prompts, function (props) {
-				_.extend(this, props);
+      this.prompt(prompts, function (props) {
+        _.extend(this, props);
 
-				done();
-			}.bind(this));
-		}.bind(this));
-	},
+        done();
+      }.bind(this));
+    }.bind(this));
+  },
 
   writing: function () {
     var self = this;
     var parts = this.name.split('/');
     var name = _.last(parts);
     // The folder (usually src/)
-    var folder = this.config.get('folder');
+    var folder = this.config.get('folder') || 'src';
     var appName = this.config.get('name');
     var fullPath = [folder].concat(parts);
 
@@ -70,8 +70,8 @@ module.exports = generators.Base.extend({
       root: _.repeat('../', fullPath.length),
       // The full component path
       path: path.join.apply(path, fullPath),
-      // The full tag name (prepending the short name if it isn't there yet)
-      tag: this.tag,
+      // The full className (prepending the short name if it isn't there yet)
+      className: this.className,
       // The short name of the component (e.g. list for restaurant/list)
       name: name,
       app: appName,
@@ -90,6 +90,6 @@ module.exports = generators.Base.extend({
 
     var mainTests = this.destinationPath(path.join(folder, 'test', 'test.js'));
     utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/')
-      + '/' + name + '_test');
+      + '/viewmodel_test');
   }
 });
