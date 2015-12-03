@@ -1,5 +1,5 @@
 import CanReact from 'can-react/can-react';
-import ViewModel from '.viewmodel';
+import ViewModel from './viewmodel';
 import renderer from './<%= name %>.jsx';
 import './<%= name %>.scss';
 

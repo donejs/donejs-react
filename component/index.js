@@ -57,12 +57,13 @@ module.exports = generators.Base.extend({
   },
 
   writing: function () {
+    this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     var self = this;
     var parts = this.name.split('/');
     var name = _.last(parts);
     // The folder (usually src/)
     var folder = this.config.get('folder') || 'src';
-    var appName = this.config.get('name');
+    var appName = this.config.get('name') || this.pkg.name;
     var fullPath = [folder].concat(parts);
 
     var options = {
