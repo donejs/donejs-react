@@ -1,6 +1,6 @@
 {
   "name": "donejs-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A plugin to add support for React to your DoneJS application http://donejs.com",
   "main": "lib",
   "scripts": {

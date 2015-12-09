@@ -3,7 +3,7 @@ import 'can/map/define/';
 
 /**
  * @module <%= className %>VM
- * @parent Component
+ * @parent <%= className %>
  *
  * <%= className %> View Model
  */
