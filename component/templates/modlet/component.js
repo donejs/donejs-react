@@ -12,5 +12,7 @@ import './<%= name %>.scss';
 export default CanReact.createClass({
   name: '<%= className %>',
   ViewModel,
-  template: renderer
+  render() {
+    return renderer(this);
+  }
 });

@@ -1,3 +1,5 @@
-<p className="<%= name %>">
-  {ctx.state.attr('message')}
-</p>
+<div className="<%= name %>">
+  <p>
+    {ctx.state.attr('message')}
+  </p>
+</div>

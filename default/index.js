@@ -8,13 +8,13 @@ module.exports = generators.Base.extend({
   },
 
   writing: function() {
-    this.npmInstall(['can-react'], { 'save': true });
+    this.npmInstall(['react', 'react-dom', 'can-react', 'steal-jsx', 'steal-sass'], { 'save': true });
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), { });
 
     var packageDelta = {
       system: {
         map: {
-          'can-connect/data/inline-cache/inline-cache': '../node_modules/can-react/extensions/can-connect-inline-cache'
+          'can-connect/data/inline-cache/inline-cache': 'can-react/extensions/can-connect-inline-cache'
         },
         npmIgnore: [
           'donejs-react'
