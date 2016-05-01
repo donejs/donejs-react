@@ -1,7 +1,22 @@
 import CanReact from 'can-react/can-react';
-import ViewModel from './viewmodel';
+import Map from 'can/map/';
+import 'can/map/define/';
+import './<%= name %>.less!';
 import renderer from './<%= name %>.jsx';
-import './<%= name %>.scss';
+
+/**
+ * @module <%= className %>VM
+ * @parent <%= className %>
+ *
+ * <%= className %> View Model
+ */
+export const ViewModel = Map.extend({
+  define: {
+    message: {
+      value: 'This is the <%= tag %> component'
+    }
+  }
+});
 
 /**
  * @module <%= className %>

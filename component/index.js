@@ -23,10 +23,10 @@ module.exports = generators.Base.extend({
     this.modletFiles = [
       'modlet/component.js',
       'modlet/component.jsx',
-      'modlet/component.scss',
-      'modlet/demo.html',
-      'modlet/viewmodel.js',
-      'modlet/viewmodel_test.js'
+      'modlet/component.less',
+      'modlet/component.html',
+      'modlet/component_test.js',
+      'modlet/test.html'
     ];
   },
 
@@ -90,7 +90,7 @@ module.exports = generators.Base.extend({
     });
 
     var mainTests = this.destinationPath(path.join(folder, 'test', 'test.js'));
-    utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/')
-      + '/viewmodel_test');
+    utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/') +
+      '/' + name + '_test');
   }
 });
