@@ -8,7 +8,7 @@ module.exports = generators.Base.extend({
   },
 
   writing: function() {
-    this.npmInstall(['react', 'react-dom', 'can-react', 'steal-jsx', 'steal-sass'], { 'save': true });
+    this.npmInstall(['react', 'react-dom', 'can-react', 'steal-jsx'], { 'save': true });
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), { });
 
     var packageDelta = {

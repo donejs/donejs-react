@@ -1,0 +1,12 @@
+<div id="app"></div>
+<script src="<%= root %>node_modules/steal/steal.js"
+        main="@empty">
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import <%= className %> from '<%= module %>/';
+
+  ReactDOM.render(
+          React.createElement(<%= className %>),
+          document.getElementById('app')
+  );
+</script>
