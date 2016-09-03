@@ -13,7 +13,7 @@ import renderer from './<%= name %>.jsx';
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'This is the <%= tag %> component'
+      value: 'This is the <%= name %> component'
     }
   }
 });
