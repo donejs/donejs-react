@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "description": "A plugin to add support for React to your DoneJS application http://donejs.com",
   "main": "lib",
+  "scripts": {
+    "preversion": "npm test",
+    "mocha": "mocha test/ --timeout 120000",
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint \"**/*.js\" --ignore-pattern \"node_modules\" --ignore-pattern \"templates\"",
+    "release:pre": "npm version prerelease && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/donejs/donejs-react.git"
@@ -22,5 +32,12 @@
     "ejs": "^2.3.4",
     "lodash": "^3.10.1",
     "yeoman-generator": "^0.21.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.18.0",
+    "mocha": "^2.5.3",
+    "yeoman-assert": "^2.2.1",
+    "yeoman-test": "^1.5.1"
   }
 }
