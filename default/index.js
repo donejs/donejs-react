@@ -1,13 +1,13 @@
-var generators = require('yeoman-generator');
+var Generator = require('yeoman-generator');
 var _ = require('lodash');
 
-module.exports = generators.Base.extend({
-	constructor: function() {
-		generators.Base.apply(this, arguments);
-	},
+module.exports = class extends Generator {
+	constructor(args, opts) {
+		super(args, opts);
+	}
 
-	writing: function() {
-		this.npmInstall([ 'react', 'react-dom', 'can-react', 'steal-jsx' ], { 'save': true });
+	writing() {
+		this.npmInstall([ 'react', 'react-dom', 'can-react', 'steal-react-jsx' ], { 'save': true });
 		this.pkg = this.fs.readJSON(this.destinationPath('package.json'), { });
 
 		var packageDelta = {
@@ -29,4 +29,4 @@ module.exports = generators.Base.extend({
 
 		this.fs.writeJSON('package.json', _.merge(packageDelta, this.pkg, customizer));
 	}
-});
+};

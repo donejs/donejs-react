@@ -1,11 +1,11 @@
-var generators = require('yeoman-generator');
-var path = require('path');
-var _ = require('lodash');
-var utils = require('../lib/utils');
+const Generator = require('yeoman-generator');
+const path = require('path');
+const _ = require('lodash');
+const utils = require('../lib/utils');
 
-module.exports = generators.Base.extend({
-	constructor: function () {
-		generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+	constructor(args, opts) {
+		super(args, opts);
 
 		this.argument('name', {
 			type: String,
@@ -27,69 +27,62 @@ module.exports = generators.Base.extend({
 			'modlet/component_test.js',
 			'modlet/test.html'
 		];
-	},
+	}
 
-	prompting: function () {
-		var done = this.async();
-		this.prompt({
+	prompting() {
+		return this.prompt({
 			name: 'name',
 			message: 'What is the module name of your component (e.g. pmo/home)?',
 			required: true,
 			when: !this.name
-		}, function (first) {
-			var name = this.name = this.name || first.name;
+		}).then((props) => {
+			this.name = props.name;
+			var className = _.capitalize(_.camelCase(this.name));
 
-			var className = _.capitalize(_.camelCase(name));
-			var prompts = [{
+			return this.prompt({
 				name: 'className',
 				message: 'The class name of the component',
 				default: className,
 				when: !this.className
-			}];
-
-			this.prompt(prompts, function (props) {
+			}).then((props) => {
 				_.extend(this, props);
+			});
+		});
+	}
 
-				done();
-			}.bind(this));
-		}.bind(this));
-	},
-
-	writing: function () {
+	writing() {
 		this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-		var self = this;
+
 		var parts = this.name.split('/');
 		var name = _.last(parts);
-    // The folder (usually src/)
 		var folder = this.config.get('folder') || 'src';
 		var appName = this.config.get('name') || this.pkg.name;
-		var fullPath = [folder].concat(parts);
+		var fullPath = [ folder ].concat(parts);
 
 		var options = {
-      // ../ levels to go up to the root
+			// ../ levels to go up to the root
 			root: _.repeat('../', fullPath.length),
-      // The full component path
+			// The full component path
 			path: path.join.apply(path, fullPath),
-      // The full className (prepending the short name if it isn't there yet)
+			// The full className (prepending the short name if it isn't there yet)
 			className: this.className,
-      // The short name of the component (e.g. list for restaurant/list)
+			// The short name of the component (e.g. list for restaurant/list)
 			name: name,
 			app: appName,
-      // The full module name (e.g. pmo/restaurant/list)
-			module: [appName].concat(parts).join('/')
+			// The full module name (e.g. pmo/restaurant/list)
+			module: [ appName ].concat(parts).join('/')
 		};
 
-		this.modletFiles.forEach(function(name) {
+		this.modletFiles.forEach((name) => {
 			var target = name.replace('component', options.name).replace('modlet/', '');
-			self.fs.copyTpl(
-        self.templatePath(name),
-        self.destinationPath(path.join(options.path, target)),
-        options
-      );
+			this.fs.copyTpl(
+				this.templatePath(name),
+				this.destinationPath(path.join(options.path, target)),
+				options
+			);
 		});
 
 		var mainTests = this.destinationPath(path.join(folder, 'test', 'test.js'));
-		utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/') +
-      '/' + name + '_test');
+		utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/') + '/' + name + '_test');
 	}
-});
+};
