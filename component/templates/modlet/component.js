@@ -1,6 +1,5 @@
-import CanReact from 'can-react/can-react';
-import Map from 'can/map/';
-import 'can/map/define/';
+import CanReact from 'can-react/';
+import DefineMap from 'can-define/map/';
 import './<%= name %>.less!';
 import renderer from './<%= name %>.jsx';
 
@@ -10,11 +9,9 @@ import renderer from './<%= name %>.jsx';
  *
  * <%= className %> View Model
  */
-export const ViewModel = Map.extend({
-  define: {
-    message: {
-      value: 'This is the <%= name %> component'
-    }
+export const ViewModel = DefineMap.extend({
+  message: {
+    value: 'This is the <%= name %> component'
   }
 });
 

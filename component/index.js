@@ -24,7 +24,7 @@ module.exports = class extends Generator {
 			'modlet/component.jsx',
 			'modlet/component.less',
 			'modlet/component.html',
-			'modlet/component_test.js',
+			'modlet/component-test.js',
 			'modlet/test.html'
 		];
 	}
@@ -82,7 +82,7 @@ module.exports = class extends Generator {
 			);
 		});
 
-		var mainTests = this.destinationPath(path.join(folder, 'test', 'test.js'));
-		utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/') + '/' + name + '_test');
+		var mainTests = this.destinationPath(path.join(folder, 'test.js'));
+		utils.addImport(mainTests, [appName].concat(fullPath.slice(1)).join('/') + '/' + name + '-test');
 	}
 };
