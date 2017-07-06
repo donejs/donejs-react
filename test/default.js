@@ -11,7 +11,9 @@ describe('donejs-react', function() {
 		;
 	});
 
-	it('should write package.json file', function() {
+	it('should write package.json and src/ files', function() {
 		assert.file([ 'package.json' ]);
+		assert.file([ 'src/index.js' ]);
+		assert.file([ 'src/index.less' ]);
 	});
 });

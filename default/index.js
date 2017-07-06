@@ -1,9 +1,15 @@
 var Generator = require('yeoman-generator');
+const path = require('path');
 var _ = require('lodash');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
 		super(args, opts);
+
+		this.srcFiles = [
+			'src/index.js',
+			'src/index.less'
+		];
 	}
 
 	writing() {
@@ -25,5 +31,21 @@ module.exports = class extends Generator {
 		};
 
 		this.fs.writeJSON('package.json', _.merge(packageDelta, this.pkg, customizer));
+
+		var folder = this.config.get('folder') || 'src';
+
+		var options = {
+			root: '.',
+			path: folder
+		};
+
+		this.srcFiles.forEach((name) => {
+			var target = name.replace('src/', '');
+			this.fs.copyTpl(
+				this.templatePath(name),
+				this.destinationPath(path.join(options.path, target)),
+				options
+			);
+		});
 	}
 };
