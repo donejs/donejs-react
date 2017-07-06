@@ -1,7 +1,11 @@
 {
   "root": true,
+  "plugins": [
+    "react"
+  ],
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
   "parserOptions": {
       "ecmaVersion": 6,
@@ -12,7 +16,8 @@
   },
   "rules": {
       "semi": 1,
-      "indent": [ "error", "tab" ]
+      "indent": [ "error", "tab" ],
+      "react/prop-types": 1
   },
   "env": {
     "es6": true,
