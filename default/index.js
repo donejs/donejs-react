@@ -7,14 +7,11 @@ module.exports = class extends Generator {
 	}
 
 	writing() {
-		this.npmInstall([ 'react', 'react-dom', 'can-react', 'steal-react-jsx' ], { 'save': true });
+		this.npmInstall([ 'react', 'react-dom', 'react-view-model', 'steal-react-jsx' ], { 'save': true });
 		this.pkg = this.fs.readJSON(this.destinationPath('package.json'), { });
 
 		var packageDelta = {
 			system: {
-				map: {
-					'can-connect/data/inline-cache/inline-cache': 'can-react/extensions/can-connect-inline-cache'
-				},
 				npmIgnore: [
 					'donejs-react'
 				]

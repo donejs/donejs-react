@@ -1,5 +1,5 @@
 <div className="<%= name %>">
   <p>
-    {ctx.state.message}
+    {ctx.viewModel.message}
   </p>
 </div>

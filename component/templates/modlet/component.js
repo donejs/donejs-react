@@ -1,5 +1,5 @@
-import CanReact from 'can-react/';
 import DefineMap from 'can-define/map/';
+import Component from 'react-view-model/component';
 import './<%= name %>.less!';
 import renderer from './<%= name %>.jsx';
 
@@ -21,10 +21,10 @@ export const ViewModel = DefineMap.extend({
  *
  * <%= className %> Description
  */
-export default CanReact.createClass({
-  name: '<%= className %>',
-  ViewModel,
+export default class <%= className %> extends Component {
   render() {
     return renderer(this);
   }
-});
+}
+
+<%= className %>.ViewModel = ViewModel;
