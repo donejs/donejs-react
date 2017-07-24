@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A plugin to add support for React to your DoneJS application http://donejs.com",
   "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: but this NO test specified but this will be a placeholder\" && exit 0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/donejs/donejs-react.git"
