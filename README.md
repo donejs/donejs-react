@@ -1,5 +1,7 @@
 # donejs-react
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/donejs/donejs-react.svg)](https://greenkeeper.io/)
+
 A plugin to add support for React to your DoneJS application.
 
 ## Install
