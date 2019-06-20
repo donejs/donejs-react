@@ -24,6 +24,6 @@
   "dependencies": {
     "ejs": "^2.3.4",
     "lodash": "^4.16.6",
-    "yeoman-generator": "^1.0.0"
+    "yeoman-generator": "^4.0.1"
   }
 }
